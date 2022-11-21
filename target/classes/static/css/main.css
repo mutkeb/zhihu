@@ -1,0 +1,569 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #f6f6f6;
+  height: auto;
+  position: relative; }
+  body li {
+    list-style-type: none; }
+  body nav {
+    background-color: #fffeff;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 100px; }
+    body nav .first-line {
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      vertical-align: middle;
+      padding-top: 5px;
+      padding-bottom: 15px;
+      background-color: #fffeff;
+      border-bottom: 2px solid #efefef; }
+      body nav .first-line .left {
+        height: 100%;
+        float: left;
+        display: flex; }
+        body nav .first-line .left div {
+          margin-right: 30px; }
+        body nav .first-line .left .title {
+          color: #2685f2;
+          font-size: 24px; }
+        body nav .first-line .left .page {
+          display: flex; }
+          body nav .first-line .left .page div {
+            color: #878e97;
+            font-size: 14px; }
+            body nav .first-line .left .page div:hover {
+              cursor: pointer;
+              font-weight: bold; }
+        body nav .first-line .left .search {
+          float: right;
+          margin-left: 100px;
+          margin-right: 100px;
+          position: relative;
+          z-index: 3; }
+          body nav .first-line .left .search div {
+            position: absolute;
+            left: 382px;
+            top: 1px; }
+            body nav .first-line .left .search div img {
+              width: 42px;
+              height: 42px; }
+              body nav .first-line .left .search div img:hover {
+                cursor: pointer; }
+          body nav .first-line .left .search > li:nth-child(1) {
+            display: flex;
+            position: relative;
+            margin-bottom: 10px; }
+          body nav .first-line .left .search .result {
+            border-radius: 2px;
+            border: 2px #efefef;
+            background-color: white;
+            text-align: left;
+            padding-left: 20px;
+            padding-top: 10px;
+            font-size: 14px;
+            box-shadow: 2px 2px 10px #909090;
+            display: none; }
+            body nav .first-line .left .search .result .special {
+              color: #178bea;
+              font-weight: bold; }
+            body nav .first-line .left .search .result > li:last-child {
+              text-align: right;
+              padding-right: 10px;
+              color: #878b9c; }
+            body nav .first-line .left .search .result li:hover {
+              position: relative;
+              cursor: pointer; }
+              body nav .first-line .left .search .result li:hover img {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 10px;
+                right: 10px; }
+          body nav .first-line .left .search input {
+            padding-left: 20px;
+            width: 400px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #f6f5f8; }
+      body nav .first-line .right {
+        height: 100%;
+        display: flex; }
+        body nav .first-line .right .no-obstacle {
+          display: flex;
+          color: #8e92a5; }
+          body nav .first-line .right .no-obstacle div {
+            color: #878e97;
+            font-size: 14px;
+            margin: 0; }
+          body nav .first-line .right .no-obstacle .iron {
+            height: 24px;
+            width: 30px;
+            padding-top: 9px;
+            margin-right: 2px; }
+            body nav .first-line .right .no-obstacle .iron:hover {
+              cursor: pointer; }
+        body nav .first-line .right .login {
+          color: #1e7ed6;
+          border: 1px solid #1e7ed6;
+          line-height: 30px;
+          width: 60px;
+          height: 30px;
+          margin-top: 5px;
+          margin-left: 50px; }
+          body nav .first-line .right .login:hover {
+            cursor: pointer;
+            font-weight: bold; }
+  body .second-line {
+    width: 100%;
+    display: flex;
+    height: 50px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #efefef;
+    box-sizing: border-box;
+    padding-left: 180px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fffeff; }
+    body .second-line div {
+      margin-right: 30px;
+      color: #2b2b2b;
+      font-weight: normal;
+      line-height: 40px; }
+    body .second-line .choose {
+      display: flex; }
+      body .second-line .choose div:nth-child(1) {
+        margin-top: 4px; }
+      body .second-line .choose img {
+        width: 20px;
+        height: 20px; }
+      body .second-line .choose div {
+        color: #85919e;
+        font-size: 12px;
+        margin-right: 0; }
+    body .second-line div:hover {
+      cursor: pointer; }
+    body .second-line div {
+      color: black;
+      position: relative; }
+      body .second-line div:hover {
+        cursor: pointer;
+        font-weight: bold; }
+      body .second-line div .bar {
+        width: 100%;
+        height: 6px;
+        position: absolute;
+        background-color: #1986fb;
+        bottom: 0px;
+        display: none; }
+  body main {
+    width: 1100px;
+    margin-left: 170px;
+    display: flex;
+    height: auto; }
+    body main li {
+      background-color: #fffeff;
+      padding: 20px;
+      margin-bottom: 10px;
+      width: 800px; }
+    body main .ul {
+      width: 1100px; }
+      body main .ul .empty {
+        position: absolute;
+        top: 30%;
+        left: 30%; }
+        body main .ul .empty div {
+          text-align: center;
+          color: #85919e; }
+    body main .title {
+      font-weight: bold; }
+      body main .title:hover {
+        cursor: pointer; }
+      body main .title span {
+        color: #ef413a; }
+    body main .user {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: none; }
+      body main .user img {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px; }
+    body main .detail {
+      display: flex;
+      margin-top: 10px;
+      position: relative; }
+      body main .detail img {
+        width: 200px;
+        height: 150px;
+        margin-left: 10px; }
+      body main .detail .right {
+        margin-top: 10px;
+        font-size: 14px; }
+        body main .detail .right .content {
+          width: auto !important;
+          /* 隐藏超出部分 */
+          overflow: hidden;
+          /* 文本超出就用省略号 */
+          text-overflow: ellipsis;
+          /* 把对象作为弹性伸缩盒子模型显示 */
+          display: -webkit-box;
+          /* WebKit内核的浏览器的私有属性，设置文本超出2行就用省略号 */
+          -webkit-line-clamp: 3;
+          /* WebKit内核的浏览器的私有属性，设置或检索伸缩盒对象的子元素的排列方式 */
+          -webkit-box-orient: vertical; }
+        body main .detail .right .open {
+          height: 20px;
+          color: #3c79b0;
+          margin-top: 10px;
+          display: flex; }
+          body main .detail .right .open:hover {
+            cursor: pointer; }
+          body main .detail .right .open div {
+            width: 60px;
+            height: 20px; }
+          body main .detail .right .open img {
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin-left: -5px; }
+    body main .other {
+      width: auto;
+      height: 40px;
+      margin-top: 10px;
+      line-height: 40px;
+      margin-left: 5px; }
+      body main .other > div {
+        margin-right: 20px; }
+      body main .other .agree {
+        float: left;
+        display: flex;
+        background-color: #eaeefd;
+        padding-right: 10px; }
+        body main .other .agree:hover {
+          cursor: pointer; }
+        body main .other .agree div:nth-child(1) {
+          margin-top: 5px;
+          margin-right: 5px; }
+        body main .other .agree img {
+          height: 20px;
+          width: 20px; }
+        body main .other .agree div {
+          text-align: center;
+          color: #4269e1;
+          font-weight: bolder; }
+      body main .other .disagree {
+        float: left;
+        height: 45px;
+        width: 40px;
+        background-color: #e6f0fc;
+        position: relative;
+        margin-right: 40px; }
+        body main .other .disagree:hover {
+          cursor: pointer; }
+        body main .other .disagree img {
+          height: 20px;
+          width: 20px;
+          position: absolute;
+          left: 25%;
+          top: 30%; }
+      body main .other .comment {
+        float: left;
+        height: 40px;
+        display: flex;
+        position: relative;
+        color: #8a90a3;
+        font-size: 10px; }
+        body main .other .comment:hover {
+          cursor: pointer; }
+        body main .other .comment img {
+          height: 16px;
+          width: 16px;
+          position: absolute;
+          top: 12px;
+          left: -24px; }
+      body main .other .time {
+        float: left;
+        color: #8a90a3;
+        font-size: 10px; }
+    body main aside {
+      margin-left: 10px;
+      width: 400px;
+      height: auto; }
+      body main aside .searchAndFind {
+        background-color: #fffeff;
+        padding-top: 20px;
+        padding-bottom: 20px; }
+        body main aside .searchAndFind .title {
+          font-size: 18px;
+          padding-left: 20px;
+          padding-bottom: 5px;
+          border-bottom: 2px solid #f4f1f4;
+          margin-bottom: 5px; }
+      body main aside ul {
+        padding-left: 20px;
+        width: 400px;
+        box-sizing: border-box; }
+        body main aside ul li {
+          display: flex;
+          font-size: 14px;
+          padding: 0;
+          font-weight: bold;
+          width: 100%; }
+          body main aside ul li:hover {
+            cursor: pointer; }
+          body main aside ul li img {
+            width: 25px;
+            height: 20px; }
+      body main aside .information {
+        height: auto;
+        margin-top: 40px;
+        font-size: 14px; }
+        body main aside .information div {
+          height: 20px;
+          line-height: 20px;
+          vertical-align: middle;
+          display: flex;
+          margin-bottom: 10px;
+          color: #9ca2b9; }
+          body main aside .information div img {
+            height: 18px;
+            width: 20px;
+            display: block;
+            margin-top: 2px;
+            margin-right: 2px; }
+      body main aside img {
+        width: 200px;
+        height: 100px; }
+  body .mask {
+    z-index: 5;
+    position: fixed;
+    /*1*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /*2*/
+    display: none; }
+    body .mask .box {
+      width: 350px;
+      height: auto;
+      background: #FFFFFF;
+      /*以下css用于让登录表单垂直居中在界面,可删除*/
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -200px;
+      margin-left: -195px;
+      padding: 20px 20px 20px; }
+      body .mask .box .error {
+        height: 14px;
+        display: none; }
+        body .mask .box .error div {
+          float: left;
+          margin-right: 5px;
+          color: #FF4848;
+          font-size: 10px;
+          height: 14px;
+          line-height: 14px;
+          text-align: center; }
+        body .mask .box .error img {
+          width: 15px;
+          height: 14px; }
+      body .mask .box .title {
+        float: left;
+        margin-right: 50px;
+        width: auto;
+        height: 50px;
+        line-height: 40px;
+        font-weight: bold;
+        border-bottom: 5px solid #0084ff;
+        margin-bottom: 30px; }
+        body .mask .box .title:hover {
+          cursor: default; }
+      body .mask .box .input-content {
+        width: 100%;
+        position: relative; }
+        body .mask .box .input-content input {
+          width: 350px;
+          height: 60px;
+          background: #ffffff;
+          border: 0;
+          border-bottom: 2px solid #dedbde;
+          box-sizing: border-box;
+          margin-bottom: 20px; }
+      body .mask .box .enter-btn {
+        margin-top: 20px;
+        width: 350px;
+        height: 50px;
+        color: #fff;
+        background: #0084ff;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        margin-bottom: 20px; }
+        body .mask .box .enter-btn:hover {
+          cursor: pointer; }
+      body .mask .box .message {
+        color: #aaaaaa;
+        font-size: 10px; }
+      body .mask .box .cancel {
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        right: -30px; }
+        body .mask .box .cancel:hover {
+          cursor: pointer; }
+  body .back {
+    width: 40px;
+    height: 40px;
+    position: sticky;
+    bottom: 0;
+    float: right; }
+    body .back:hover {
+      cursor: pointer; }
+  body .mask2 {
+    z-index: 4;
+    position: fixed;
+    /*1*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /*2*/
+    display: none;
+    font-size: 14px; }
+    body .mask2 .comment {
+      width: 700px;
+      height: 400px;
+      overflow-y: auto;
+      background: #FFFFFF;
+      /*以下css用于让登录表单垂直居中在界面,可删除*/
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -200px;
+      margin-left: -350px;
+      padding: 20px 20px 20px; }
+      body .mask2 .comment .nav {
+        height: 40px;
+        display: flex;
+        border-bottom: 2px solid #efefef;
+        margin-bottom: 10px; }
+        body .mask2 .comment .nav .title {
+          margin-right: 470px;
+          font-weight: bold; }
+        body .mask2 .comment .nav img {
+          width: 20px;
+          height: 20px; }
+        body .mask2 .comment .nav .sort {
+          color: #aaaaaa;
+          display: flex; }
+          body .mask2 .comment .nav .sort:hover {
+            cursor: pointer; }
+      body .mask2 .comment ul > div {
+        font-size: 13px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #efefef; }
+        body .mask2 .comment ul > div .son {
+          padding-left: 40px; }
+          body .mask2 .comment ul > div .son .user {
+            padding-top: 10px;
+            border-top: 2px solid #efefef; }
+        body .mask2 .comment ul > div .user {
+          display: flex;
+          color: #aaaaaa;
+          margin-bottom: 10px;
+          position: relative; }
+          body .mask2 .comment ul > div .user .avatar {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px; }
+          body .mask2 .comment ul > div .user .name {
+            line-height: 30px; }
+          body .mask2 .comment ul > div .user .create {
+            line-height: 30px;
+            position: absolute;
+            right: 0; }
+        body .mask2 .comment ul > div .content {
+          padding-left: 40px;
+          margin-bottom: 10px; }
+        body .mask2 .comment ul > div .functions {
+          display: flex;
+          padding-left: 40px; }
+          body .mask2 .comment ul > div .functions .good img {
+            width: 15px;
+            height: 15px; }
+          body .mask2 .comment ul > div .functions .answer img {
+            width: 20px;
+            height: 20px; }
+          body .mask2 .comment ul > div .functions .bad img {
+            width: 25px;
+            height: 20px; }
+          body .mask2 .comment ul > div .functions .report img {
+            width: 30px;
+            height: 20px; }
+          body .mask2 .comment ul > div .functions > div {
+            display: flex;
+            margin-right: 20px; }
+            body .mask2 .comment ul > div .functions > div:hover {
+              cursor: pointer; }
+            body .mask2 .comment ul > div .functions > div img {
+              display: block;
+              margin-right: 5px; }
+      body .mask2 .comment .publish {
+        display: flex;
+        text-align: left;
+        position: sticky;
+        bottom: 20px; }
+        body .mask2 .comment .publish .input-content {
+          border: 2px solid #efefef;
+          width: 600px;
+          height: 30px;
+          padding-left: 5px;
+          display: flex; }
+          body .mask2 .comment .publish .input-content input {
+            border: none;
+            width: 550px;
+            line-height: 30px;
+            outline: none; }
+          body .mask2 .comment .publish .input-content img {
+            display: block;
+            width: 20px;
+            height: 20px;
+            padding-top: 3px; }
+            body .mask2 .comment .publish .input-content img:hover {
+              cursor: pointer; }
+        body .mask2 .comment .publish .button {
+          width: 60px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          margin-left: 20px;
+          background-color: #7cbffd;
+          color: #e3f7fc; }
+          body .mask2 .comment .publish .button:hover {
+            cursor: pointer; }
+      body .mask2 .comment > img {
+        width: 20px;
+        height: 20px;
+        position: fixed;
+        right: 290px;
+        top: 215px; }
+        body .mask2 .comment > img:hover {
+          cursor: pointer; }
+
+/*# sourceMappingURL=main.css.map */
