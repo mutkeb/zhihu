@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zhihu.dao.UserDAO">
+
+    <resultMap id="userResultMap" type="com.example.zhihu.dataobject.UserDO">
+        <id column="id" property="id"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="pwd" property="pwd"></result>
+        <result column="mobile" property="mobile"></result>
+        <result column="email" property="email"></result>
+        <result column="avatar" property="avatar"></result>
+        <result column="gmt_created" property="gmtCreated"></result>
+        <result column="gmt_modified" property="gmtModified"></result>
+    </resultMap>
+
+    <insert id="add" parameterType="com.example.zhihu.dataobject.UserDO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user`(user_name,pwd,mobile,email,avatar,gmt_created,gmt_modified)
+        VALUES(#{userName,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{avatar,jdbcType=VARCHAR},now(),now())
+    </insert>
+
+    <update id="update" parameterType="com.example.zhihu.dataobject.UserDO">
+        UPDATE `user`
+        <set>
+            <if test="avatar != null">
+                avatar = #{avatar},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile},
+            </if>
+            <if test="email != null">
+                email = #{email}
+            </if>
+            gmt_modified = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" >
+        delete from `user` where id = #{id}
+    </delete>
+
+
+    <select id="findByUserName" resultMap="userResultMap">
+        select * from `user`
+        <where>
+            <if test="userName != null">
+                user_name = #{userName} limit 1
+            </if>
+        </where>
+    </select>
+
+    <select id="findAll" resultMap="userResultMap">
+        select * from `user`
+    </select>
+
+    <insert id="batchAdd" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user`(user_name,pwd,mobile,email,avatar,gmt_created,gmt_modified)
+        VALUES
+        <foreach collection="list" separator="," item="it" index="index">
+            (#{it.userName,jdbcType=VARCHAR},#{it.pwd,jdbcType=VARCHAR},#{it.mobile,jdbcType=VARCHAR},#{it.email,jdbcType=VARCHAR},#{it.avatar,jdbcType=VARCHAR},now(),now())
+        </foreach>
+    </insert>
+
+    <select id="findByEmail" resultMap="userResultMap">
+        select * from `user`
+        <where>
+            <if test="email != null">
+                email = #{email} limit 1
+            </if>
+        </where>
+    </select>
+
+    <select id="findByMobile" resultMap="userResultMap">
+        select * from `user`
+        <where>
+            <if test="mobile != null">
+                mobile = #{mobile} limit 1
+            </if>
+        </where>
+    </select>
+
+    <select id="findByUserId" resultMap="userResultMap">
+        select * from `user`
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zhihu.dao.ContentDAO">
+    <resultMap id="contentResultMap" type="com.example.zhihu.dataobject.ContentDO">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="detail" property="detail"></result>
+        <result column="media" property="media"></result>
+        <result column="favor" property="favor"></result>
+        <result column="gmt_created" property="gmtCreated"></result>
+        <result column="gmt_modified" property="gmtModified"></result>
+    </resultMap>
+
+    <insert id="add" parameterType="com.example.zhihu.dataobject.ContentDO">
+        INSERT INTO `content`(id,title,user_id,detail,media,favor,gmt_created,gmt_modified)
+        VALUES(#{id,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{userId,jdbcType=BIGINT},#{detail,jdbcType=LONGVARCHAR},#{media,jdbcType=LONGVARCHAR},
+        #{favor,jdbcType=INTEGER},now(),now())
+    </insert>
+
+    <update id="update" parameterType="com.example.zhihu.dataobject.ContentDO">
+        UPDATE `content`
+        <set>
+            <if test="detail != null">
+                detail = #{detail},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="media != null">
+                media = #{media},
+            </if>
+            gmt_modified = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" >
+        delete from `content` where id = #{id}
+    </delete>
+
+    <select id="findByTitle" resultMap="contentResultMap">
+        select * from `content` where title like CONCAT('%',#{title},'%') order by favor desc
+    </select>
+
+    <select id="findAll" resultMap="contentResultMap">
+        select * from `content`
+    </select>
+
+    <select id="findByRefId" resultMap="contentResultMap">
+        select * from `content`
+        <where>
+            <if test="refId != null">
+                id = #{refId}
+            </if>
+        </where>
+    </select>
+<!--    <insert id="batchAdd" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">-->
+<!--        INSERT INTO `content`(id,title,detail,media,favor,gmt_created,gmt_modified)-->
+<!--        VALUES-->
+<!--        <foreach collection="list" separator="," item="it" index="index">-->
+<!--            (#{it.id,jdbcType=VARCHAR},#{it.title,jdbcType=VARCHAR},#{it.detail,jdbcType=VARCHAR},#{it.media,jdbcType=VARCHAR},#{it.favor,jdbcType=INTEGER},now(),now())-->
+<!--        </foreach>-->
+<!--    </insert>-->
+</mapper>

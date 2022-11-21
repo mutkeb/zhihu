@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zhihu.dao.CommentDAO">
+    <resultMap id="commentResultMap" type="com.example.zhihu.dataobject.CommentDO">
+        <id column="id" property="id"></id>
+        <result column="ref_id" property="refId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="favor" property="favor"></result>
+        <result column="content" property="content"></result>
+        <result column="parent_id" property="parentId"></result>
+        <result column="gmt_created" property="gmtCreated"></result>
+        <result column="gmt_modified" property="gmtModified"></result>
+    </resultMap>
+
+    <resultMap id="commentModelResultMap" type="com.example.zhihu.model.Comment">
+        <id column="id" property="id"></id>
+        <result column="ref_id" property="refId"></result>
+        <result column="content" property="content"></result>
+        <result column="favor" property="favor"></result>
+        <result column="parent_id" property="parentId"></result>
+        <result column="gmt_created" property="gmtCreated"></result>
+        <result column="gmt_modified" property="gmtModified"></result>
+        <association property="author" javaType="com.example.zhihu.model.User">
+            <id column="user_id" property="id"></id>
+            <result column="user_name" property="userName"></result>
+            <result column="pwd" property="pwd"></result>
+            <result column="mobile" property="mobile"></result>
+            <result column="email" property="email"></result>
+            <result column="avatar" property="avatar"></result>
+        </association>
+    </resultMap>
+
+    <insert id="add" parameterType="com.example.zhihu.dataobject.CommentDO" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `comment`(ref_id,user_id,content,parent_id,gmt_created,gmt_modified,favor)
+        VALUES (#{refId,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT},now(),now(),#{favor})
+    </insert>
+
+    <update id="update" parameterType="com.example.zhihu.dataobject.CommentDO">
+        UPDATE `comment`
+        <set>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            gmt_modified = now()
+        </set>
+    </update>
+
+    <delete id="delete">
+        DELETE FROM `comment` where id = #{id}
+    </delete>
+
+    <select id="findByUserIds" resultMap="commentResultMap">
+        select * from `comment`
+        <where>
+            user_id in
+            <foreach collection="userIds" index="index" separator="," item="item" open="(" close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="findByRefId" resultMap="commentModelResultMap">
+        select a.*,u.user_name,u.pwd,u.mobile,u.avatar from comment a left join user u
+        on a.user_id = u.id where a.ref_id = #{refId} order by a.gmt_created asc
+    </select>
+
+    <select id="findAll" resultMap="commentResultMap">
+        select * from `comment`
+    </select>
+
+    <insert id="batchAdd" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `comment`(ref_id,user_id,content,parent_id,favor,gmt_created,gmt_modified)
+        VALUES
+        <foreach collection="list" index="index" item="it" separator=",">
+            (#{it.refId,jdbcType=VARCHAR}, #{it.userId,jdbcType=BIGINT}, #{it.content,jdbcType=VARCHAR}, #{it.parentId,jdbcType=BIGINT},#{it.favor},now(),now())
+        </foreach>
+    </insert>
+</mapper>
