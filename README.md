@@ -4,46 +4,14 @@
 
 数据库选择：Mysql+Redis
 数据表设计：
-user表:
+![image](https://user-images.githubusercontent.com/103638902/226094632-f102045d-6c32-4615-bc16-27b3e4f07fd5.png)
+![image](https://user-images.githubusercontent.com/103638902/226094637-b0ab5f71-67ce-443b-a191-58aafaa10546.png)
+![image](https://user-images.githubusercontent.com/103638902/226094642-4c199e4a-d13f-4517-b251-dfca365e7523.png)
 
-+--------------+-------------+------+-----+---------+----------------+
-| Field        | Type        | Null | Key | Default | Extra          |
-+--------------+-------------+------+-----+---------+----------------+
-| id           | bigint      | NO   | PRI | NULL    | auto_increment |
-| user_name    | varchar(50) | YES  |     | NULL    |                |
-| pwd          | varchar(32) | YES  |     | NULL    |                |
-| mobile       | varchar(20) | YES  |     | NULL    |                |
-| email        | varchar(32) | YES  |     | NULL    |                |
-| avatar       | varchar(32) | YES  |     | NULL    |                |
-| gmt_created  | datetime    | YES  |     | NULL    |                |
-| gmt_modified | datetime    | YES  |     | NULL    |                |
-+--------------+-------------+------+-----+---------+----------------+
-comment表:
-+--------------+---------------+------+-----+---------+----------------+
-| Field        | Type          | Null | Key | Default | Extra          |
-+--------------+---------------+------+-----+---------+----------------+
-| id           | bigint        | NO   | PRI | NULL    | auto_increment |
-| ref_id       | varchar(100)  | YES  |     | NULL    |                |
-| user_id      | bigint        | YES  |     | NULL    |                |
-| content      | varchar(1000) | YES  |     | NULL    |                |
-| parent_id    | bigint        | YES  |     | NULL    |                |
-| gmt_created  | datetime      | YES  |     | NULL    |                |
-| gmt_modified | datetime      | YES  |     | NULL    |                |
-| favor        | int           | YES  |     | NULL    |                |
-+--------------+---------------+------+-----+---------+----------------+
-content表：
-+--------------+--------------+------+-----+---------+-------+
-| Field        | Type         | Null | Key | Default | Extra |
-+--------------+--------------+------+-----+---------+-------+
-| id           | varchar(100) | NO   | PRI | NULL    |       |
-| title        | varchar(50)  | YES  |     | NULL    |       |
-| detail       | text         | YES  |     | NULL    |       |
-| media        | text         | YES  |     | NULL    |       |
-| favor        | int          | YES  |     | NULL    |       |
-| user_id      | bigint       | YES  |     | NULL    |       |
-| gmt_created  | datetime     | YES  |     | NULL    |       |
-| gmt_modified | datetime     | YES  |     | NULL    |       |
-+--------------+--------------+------+-----+---------+-------+
+
+主页面：![image](https://user-images.githubusercontent.com/103638902/226096458-42880ab9-38df-43a3-abce-cb2ddb032308.png)
+
+评论页面：![image](https://user-images.githubusercontent.com/103638902/226096485-80f823c4-56e3-4ae3-a52c-db0515aa515f.png)
 
 触发登录事件：主页面的喜欢按钮和踩按钮，以及登录按钮，评论界面的喜欢，回复，踩，举报按钮.
 
